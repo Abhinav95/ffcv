@@ -34,6 +34,7 @@ class RandAugment(Operation):
             (11, "Solarize", np.linspace(255.0, 0.0, num_bins), 1),
             (12, "AutoContrast", np.array(0.0), 1),
             (13, "Equalize", np.array(0.0), 1),
+            (14, "Invert", np.array(0.0), 1),
         ]
 
     def generate_code(self) -> Callable:
@@ -53,7 +54,7 @@ class RandAugment(Operation):
                     else:
                         src = dst
                         
-                    idx = np.random.randint(low=0, high=13+1)
+                    idx = np.random.randint(low=0, high=14+1)
                     mag = magnitudes[idx]
                     if np.random.random() < 0.5:
                         mag = mag * is_signed[idx] 
@@ -101,6 +102,9 @@ class RandAugment(Operation):
                     
                     if idx == 13: # Equalize (TODO: +0.008s)
                         equalize(src[i], lut[i], dst[i])
+
+                    if idx == 14: # Invert
+                        invert(src[i], dst[i])
                 
             return dst
 
