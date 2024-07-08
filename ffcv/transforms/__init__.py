@@ -13,6 +13,7 @@ from .randaugment import RandAugment
 from .solarization import Solarization
 from .color_jitter import RandomBrightness, RandomContrast, RandomSaturation
 from .erasing import RandomErasing
+from .colorjitter import ColorJitter
 
 __all__ = ['ToTensor', 'ToDevice',
            'ToTorchImage', 'NormalizeImage',
@@ -24,4 +25,4 @@ __all__ = ['ToTensor', 'ToDevice',
            'Poison', 'ReplaceLabel',
            'ModuleWrapper', 
            'Solarization',
-           'RandomBrightness', 'RandomContrast', 'RandomSaturation']
+           'RandomBrightness', 'RandomContrast', 'RandomSaturation', 'ColorJitter']
